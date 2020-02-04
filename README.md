@@ -1,10 +1,6 @@
 # dodax-comparator-chrome-extension
 Chrome extension to compare prices across all Dodax sites
 
-## Authors
-
-* **Gorka Armentia** - *Initial work* - [Joruus](https://github.com/Joruus)
-
 ## TODO
 
 ### Improvements
@@ -16,6 +12,10 @@ Chrome extension to compare prices across all Dodax sites
 
 ### Bugs
 - None...?
+
+## Authors
+
+* **Gorka Armentia** - *Initial work* - [Joruus](https://github.com/Joruus)
 
 ## License
 
