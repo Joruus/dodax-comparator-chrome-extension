@@ -1,0 +1,35 @@
+body {
+    width: 500px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.version,
+.version-title {
+    padding: 10px;
+    display: flex;
+}
+
+.version > div,
+.version-title > div {
+    flex: 1;
+}
+
+.version-title {
+    font-weight: bold;
+    color: #448ccb;
+    text-transform: uppercase;
+}
+
+.small {
+    background-color: #448ccb;
+    color: white;
+    font-weight: bold;;
+}
+
+.small a {
+    color: white;
+}
