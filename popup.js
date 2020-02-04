@@ -61,7 +61,7 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
         let versions = Array.prototype.slice.call(document.getElementsByClassName('version'));
         versions.forEach(v => {
             console.log("ATTR", v.getAttribute("price"));
-            let price = v.getAttribute("price");
+            let price = parseFloat(v.getAttribute("price"));
             if (smallPrice == 0 || price < smallPrice) {
                 smallPrice = price;
 
