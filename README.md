@@ -6,7 +6,6 @@ Chrome extension to compare prices across all Dodax sites
 ### Improvements
 - Translate into english
 - Make the extension available in multiple languages: https://developer.chrome.com/extensions/i18n
-- Use live currency rates to convert currencies
 - Improve look
 - Maybe order the results by price
 
