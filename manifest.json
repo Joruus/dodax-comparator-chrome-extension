@@ -1,6 +1,7 @@
 {
     "name": "Comparador de Dodax",
-    "version": "1.5",
+    "version": "1.5.1",
+    "author": "Joruus",
     "description": "Compara los precios de las diferentes tiendas de Dodax",
     "permissions": ["activeTab", "declarativeContent", "storage", 
         "https://www.dodax.es/*",
