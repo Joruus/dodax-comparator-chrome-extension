@@ -6,7 +6,7 @@ fx.rates = {
 	"CHF" : 0.936604
 }
 
-let ratesAPI = 'https://api.ratesapi.io/api/latest?base=EUR&symbols=';
+let ratesAPI = 'https://apis.ratesapi.io/api/latest?base=EUR&symbols=';
 
 let dodaxVersions = { 'versions': [
     {   'extension': 'es',
@@ -109,13 +109,20 @@ function getURLPrice(url, version) {
 function updateRates() {
     for (let rate in fx.rates) {
         if (rate !== 'EUR') {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", ratesAPI + rate, false);
-            xhr.onload = function() {
-                let response = JSON.parse(xhr.responseText);
-                fx.rates[rate] = response.rates[rate];
+            try {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", ratesAPI + rate, false);
+                xhr.onload = function() {
+                    let response = JSON.parse(xhr.responseText);
+                    fx.rates[rate] = response.rates[rate];
+                }
+                xhr.onerror = function() {
+                    console.log(xhr.responseText);
+                }
+                xhr.send();
+            } catch(e) {
+                console.log(e)
             }
-            xhr.send();
         }
     };
 }
