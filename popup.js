@@ -3,8 +3,10 @@ fx.rates = {
 	"EUR" : 1, 
 	"GBP" : 0.848425,
 	"PLN" : 4.29654,
-	"CZK" : 0.936604
+	"CHF" : 0.936604
 }
+
+let ratesAPI = 'https://api.ratesapi.io/api/latest?base=EUR&symbols=';
 
 let dodaxVersions = { 'versions': [
     {   'extension': 'es',
@@ -29,7 +31,7 @@ let dodaxVersions = { 'versions': [
         'currency': 'EUR'
     }, {
         'extension': 'ch',
-        'currency': 'CZK'
+        'currency': 'CHF'
     }, {
         'extension': 'pl',
         'currency': 'PLN'
@@ -38,11 +40,12 @@ let dodaxVersions = { 'versions': [
 
 chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
     let url = tabs[0].url;
-    
     let urlsplit = url.split('/');
     let currentExtension = urlsplit[2].replace('www.dodax.', '');
-
     let promises = [];
+
+    //Update rates
+    updateRates();
 
     dodaxVersions.versions.forEach(version => {
         promises.push(getURLPrice(url.replace('.' + currentExtension + '/', '.' + version.extension + '/'), version));
@@ -60,7 +63,6 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
 
         let versions = Array.prototype.slice.call(document.getElementsByClassName('version'));
         versions.forEach(v => {
-            console.log("ATTR", v.getAttribute("price"));
             let price = parseFloat(v.getAttribute("price"));
             if (smallPrice == 0 || price < smallPrice) {
                 smallPrice = price;
@@ -102,4 +104,18 @@ function getURLPrice(url, version) {
         }
         xhr.send();
     });   
+}
+
+function updateRates() {
+    for (let rate in fx.rates) {
+        if (rate !== 'EUR') {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", ratesAPI + rate, false);
+            xhr.onload = function() {
+                let response = JSON.parse(xhr.responseText);
+                fx.rates[rate] = response.rates[rate];
+            }
+            xhr.send();
+        }
+    };
 }
