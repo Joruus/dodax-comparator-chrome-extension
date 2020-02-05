@@ -6,7 +6,7 @@ fx.rates = {
 	"CHF" : 0.936604
 }
 
-let ratesAPI = 'https://apis.ratesapi.io/api/latest?base=EUR&symbols=';
+let ratesAPI = 'https://api.ratesapi.io/api/latest?base=EUR&symbols=';
 
 let dodaxVersions = { 'versions': [
     {   'extension': 'es',

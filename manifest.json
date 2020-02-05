@@ -12,7 +12,8 @@
         "https://www.dodax.pl/*",
         "https://www.dodax.at/*",
         "https://www.dodax.nl/*",
-        "https://www.dodax.ch/*"],
+        "https://www.dodax.ch/*",
+        "https://api.ratesapi.io/*"],
     "background": {
         "scripts": ["background.js"],
         "persistent": false
